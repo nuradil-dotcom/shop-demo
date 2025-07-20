@@ -420,33 +420,36 @@
         <div class="prod-meta">Поло жейде</div>
         <h3>adidas X Pop Polo shirt, navy / blue</h3>
         <div class="prod-price">$69.99</div>
-        <button class="more-btn" onclick="openModal('adidas X Pop Polo shirt, navy / blue', '$69.99')">Толығырақ</button>
+        <button class="more-btn" onclick="openModal('adidas X Pop Polo shirt, navy / blue', '$69.99', 'adidas1-removebg-preview.png')">Толығырақ</button>
       </article>
       <article class="product-card" data-cat="women">
         <div class="prod-thumb"><img src="adidas2.png" alt="adidas X Pop TRX Vintage, navy / white" loading="lazy"></div>
         <div class="prod-meta">Аяқ киім</div>
         <h3>adidas X Pop TRX Vintage, navy / white</h3>
         <div class="prod-price">$89.99</div>
-        <button class="more-btn" onclick="openModal('adidas X Pop TRX Vintage, navy / white', '$89.99')">Толығырақ</button>
+        <button class="more-btn" onclick="openModal('adidas X Pop TRX Vintage, navy / white', '$89.99', 'adidas2.png')">Толығырақ</button>
       </article>
       <article class="product-card" data-cat="women">
         <div class="prod-thumb"><img src="adidas3.png" alt="adidas X Pop Beckenbauer Track Jacket" loading="lazy"></div>
         <div class="prod-meta">Күртеше</div>
         <h3>adidas X Pop Beckenbauer Track Jacket</h3>
         <div class="prod-price">$120.00</div>
-        <button class="more-btn" onclick="openModal('adidas X Pop Beckenbauer Track Jacket', '$120.00')">Толығырақ</button>
+        <button class="more-btn" onclick="openModal('adidas X Pop Beckenbauer Track Jacket', '$120.00', 'adidas3.png')">Толығырақ</button>
       </article>
       <article class="product-card" data-cat="women">
         <div class="prod-thumb"><img src="adidas4.png" alt="adidas X Pop Classic t-shirt, grey / navy" loading="lazy"></div>
         <div class="prod-meta">Футболка</div>
         <h3>adidas X Pop Classic t-shirt, grey / navy</h3>
         <div class="prod-price">$120.00</div>
-        <button class="more-btn" onclick="openModal('adidas X Pop Classic t-shirt, grey / navy', '$120.00')">Толығырақ</button>
+        <button class="more-btn" onclick="openModal('adidas X Pop Classic t-shirt, grey / navy', '$120.00', 'adidas4.png')">Толығырақ</button>
       </article>
       
       <div id="productModal" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
+          <div id="modalImageContainer">
+            <img id="modalImage" src="" alt="Product image" />
+          </div>
           <h2 id="modalTitle"></h2>
           <p id="modalPrice" style="font-size: 1.2em; font-weight: bold;"></p>
           <label for="sizeSelect">Өлшем таңдаңыз:</label>
@@ -622,11 +625,11 @@
         hamMenu.classList.remove('active');
         });
     });
-      function openModal(productName, price) {
+      function openModal(productName, price, imageSrc) {
     document.getElementById('productModal').style.display = 'block';
     document.getElementById('modalTitle').textContent = productName;
     document.getElementById('modalPrice').textContent = price;
-
+    document.getElementById('modalImage').src = imageSrc;
     document.getElementById('sizeSelect').value = "S";
 
     updateWhatsappLink(productName);
@@ -635,6 +638,15 @@
   function closeModal() {
     document.getElementById('productModal').style.display = 'none';
   }
+  const images = document.querySelectorAll('.product-card');
+    for (const card of images) {
+      const h3 = card.querySelector('h3');
+      if (h3.textContent === productName) {
+        const imgSrc = card.querySelector('img').src;
+        document.getElementById('modalImage').src = imgSrc;
+        break;
+      }
+    }
 
   function updateWhatsappLink(productName) {
     const size = document.getElementById('sizeSelect').value;
