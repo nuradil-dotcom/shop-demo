@@ -488,6 +488,23 @@
       }
       
     }
+    @media (max-width: 400px){
+      :root{--header-height:64px;}
+      .site-header .header-inner{grid-template-columns:auto 1fr auto;}
+      .primary-nav{display:none;}
+      .logo-group{justify-self:start; margin-left: 10px;}
+      .header-spacer{display:none;}
+      .brand-name{line-height: 1.05; font-size: 1.1rem;}
+      .sub-brand{font-size: 0.8rem;}
+      .hero{padding-block:min(25vh,200px);}
+      .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.0) 0%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.5) 100%);z-index:0;}
+      .hero-eyebrow{color: white;}
+      .hero h1{font-size:clamp(2rem,10vw,2.75rem); color: white;}  
+      .section-heading{margin-top:4rem;margin-bottom:2rem;}
+      .tabs{gap:1rem;font-size:0.9rem;}
+      .promo-card{min-height:260px;padding:1.5rem;}
+      .promo-card h3{font-size:1.25rem;}
+    }
   </style>
 </head>
 <body>
@@ -803,6 +820,7 @@
   </script>
 </body>
 </html>
+
 
 
 
